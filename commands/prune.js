@@ -2,12 +2,10 @@ module.exports = {
     name: 'prune',
     description: 'Delete old messages',
     args: true,
-    cooldown: 30,
+    cooldown: 0,
     usage: '<number>',
     execute(message, args) {
         const amount = parseInt(args[0]) + 1;
-        if (!message.member.roles.some(r => ["Administrator", "ayyLmao"].includes(r.name)))
-            return message.reply("Sorry, you don't have permissions to use this!");
 
         if (isNaN(amount)) {
             return message.reply('that doesn\'t seem to be a valid number.');
@@ -16,7 +14,6 @@ module.exports = {
         }
         message.channel.bulkDelete(amount, true).catch(err => {
             console.error(err);
-            message.channel.send('TELL AUSTIN SOMETHING MESSED UP!');
         });
     },
 };

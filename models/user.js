@@ -3,13 +3,33 @@ module.exports = (sequelize, DataTypes) => {
     user: {
       type: DataTypes.STRING
     },
-    userId: {
+    userID: {
+      type: DataTypes.STRING,
+      primaryKey: true
+    },
+    guildID: {
       type: DataTypes.STRING
     },
-    postCount: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0
+    discriminator: {
+      type: DataTypes.STRING
+    },
+    avatar: {
+      type: DataTypes.STRING
+    },
+    bot: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    lastMessageID: {
+      type: DataTypes.STRING
     }
   });
+
+  User.associate = (models) => {
+    User.hasMany(models.Message, {
+      foreignKey: 'userID'
+    })
+  }
+
   return User;
 };

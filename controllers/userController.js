@@ -1,30 +1,7 @@
 const db = require("../models");
 
 module.exports = {
-  incrementPostCount: (user, id) => {
-    // searched the database for the user. If none exists, create it.
-    db.User.findOrCreate({
-      where: {
-        user: user,
-        userId: id
-      },
-      defaults: {
-        postCount: 0
-      }
-    })
-      .then(dbUser => {
-        // increments post count
-        db.User.increment("postCount", {
-          where: {
-            user: user,
-            userId: id
-          }
-        });
-      })
-      .catch(err => {
-        if (err) throw err;
-      });
-  },
+  //sync: (users)
   // finds user by their discord ID in the database
   getStats: (id, cb) => {
     db.User.findOne({
@@ -38,5 +15,19 @@ module.exports = {
       .catch(err => {
         if (err) throw err;
       });
+  },
+  create: (member, cb) => {
+    console.log(member)
+    db.User.create({
+      user: member.user.username,
+      discriminator: member.user.discriminator,
+      bot: member.user.bot ? true : false,
+      avatar: member.user.avatar,
+      userID: member.user.id
+    }).then(dbUser => {
+      cb(dbUser)
+    }).catch(err => {
+      if (err) throw err;
+    })
   }
 };

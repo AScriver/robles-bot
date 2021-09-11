@@ -2,4 +2,4 @@ node_modules
 
 .env
 
-/logging/logFiles/errorlog.txt
+logging

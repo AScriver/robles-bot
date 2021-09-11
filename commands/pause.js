@@ -8,6 +8,7 @@ module.exports = {
   usage: '',
   execute(message, args) {
     const servers = play.servers;
+    console.log(servers[message.guild.id].dispatcher)
     const server = servers[message.guild.id];
     if (server.dispatcher) {
       server.dispatcher.pause();
