@@ -21,7 +21,7 @@
     "mysql2": "^1.6.5",
     "nodemon": "^2.0.12",
     "opusscript": "0.0.6",
-    "sequelize": "^5.10.1",
+    "sequelize": "^6.28.2",
     "tedious": "^9.2.1",
     "twilio": "^3.33.1",
     "ytdl-core": "^4.9.1"
