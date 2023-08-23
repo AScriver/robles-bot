@@ -6,12 +6,16 @@
     "port": 1433,
     "database": "Discord",
     "options": {
-        "enableArithAbort": false,
-        "rowCollectionOnRequestCompletion": true,
-        "validateBulkLoadParameters": false
+      "enableArithAbort": false,
+      "rowCollectionOnRequestCompletion": true,
+      "validateBulkLoadParameters": false
     },
     "dialect": "mssql",
-    "logging": false,
-    "validateBulkLoadParameters": false
+    "dialectOptions": {
+      "options": {
+        "validateBulkLoadParameters": false
+      }
+    },
+    "logging": false
   }
 }
