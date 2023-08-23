@@ -15,7 +15,7 @@
     "dotenv": "^8.0.0",
     "ffmpeg": "0.0.4",
     "fortnite": "^4.3.2",
-    "fortnite-api": "^2.16.1",
+    "fortnite-api": "^3.4.0",
     "moment": "^2.24.0",
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
