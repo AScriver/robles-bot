@@ -4,6 +4,11 @@
 
 This is a bot that I created to to mess around with my friends in our Discord server. Robles-Bot can do anything from play music from a YouTube link in your chat channel, to calling a phone and talking with text to speech. I will be adding more commands once I have more free time, but feel free to branch and contribute your own as well!
 
+## Commands
+
+- /ping - Replies with Pong!
+- /roll - Rolls a dice with optional sides and count.
+
 ## Installation
 
 ```
