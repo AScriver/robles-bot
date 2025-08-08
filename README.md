@@ -15,9 +15,12 @@ This is a bot that I created to to mess around with my friends in our Discord se
 git clone git@github.com:AScriver/robles-bot.git
 cd robles-bot
 npm install
+cp .env.example .env
 ```
 
 [How do I setup a bot account and invite it to my server?](https://discordpy.readthedocs.io/en/rewrite/discord.html)
+
+Update `.env` with your `DISCORD_TOKEN`, `CLIENT_ID`, `OWNER_ID`, and `GUILD_ID`.
 
 ## Help
 
