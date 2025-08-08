@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); // Load CLIENT_ID, GUILD_ID, and DISCORD_TOKEN from .env
 const {REST, Routes} = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -58,4 +58,4 @@ const rest = new REST().setToken(token);
     // And of course, make sure you catch and log any errors!
     console.error(error);
   }
-})();
+  })();
