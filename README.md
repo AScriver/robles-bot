@@ -6,7 +6,10 @@ This is a bot that I created to mess around with my friends in our Discord serve
 
 ## Codebase Overview
 
-Robles-Bot is a Node.js application built on Discord.js. The entry point (`server.js`) loads environment variables, discovers command modules under `commands/`, and listens for Discord events to dispatch interactions to the appropriate handler. A companion script (`deploy-commands.js`) registers these commands with Discord's API.
+Robles-Bot is a Node.js application built on Discord.js.
+The entry point (`server.js`) loads environment variables and discovers command modules under `commands/`.
+It listens for Discord events and dispatches interactions to the appropriate handler.
+A companion script (`deploy-commands.js`) registers these commands with Discord's API.
 
 Commands are organized into category folders, each exporting a `SlashCommandBuilder` definition and an async `execute` function. Database settings live in `config/config.json`, and `package.json` provides scripts for running the bot or executing tests.
 
