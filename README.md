@@ -11,6 +11,8 @@ The entry point (`server.js`) loads environment variables and discovers command 
 It listens for Discord events and dispatches interactions to the appropriate handler.
 A companion script (`deploy-commands.js`) registers these commands with Discord's API.
 
+Each morning the bot can also post top headlines from configurable RSS feeds into a chosen channel.
+
 Commands are organized into category folders, each exporting a `SlashCommandBuilder` definition and an async `execute` function. Database settings live in `config/config.json`, and `package.json` provides scripts for running the bot or executing tests.
 
 To explore further, learn about Discord.js fundamentals, command deployment strategies, environment management with dotenv, persistence through Sequelize, and Node.js async patterns.
@@ -32,6 +34,7 @@ cp .env.example .env
 [How do I setup a bot account and invite it to my server?](https://discordpy.readthedocs.io/en/rewrite/discord.html)
 
 Update `.env` with your `DISCORD_TOKEN`, `CLIENT_ID`, `OWNER_ID`, and `GUILD_ID`.
+For daily news updates, also set `NEWS_CHANNEL_ID` to the target channel and `NEWS_SOURCES` to a comma-separated list of RSS feed URLs.
 
 ## Help
 

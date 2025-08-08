@@ -2,6 +2,8 @@ require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
 const {Client, Collection, Events, GatewayIntentBits} = require('discord.js');
+const cron = require('node-cron');
+const fetchTopStories = require('./news');
 
 const token = process.env.DISCORD_TOKEN;
 const client = new Client({intents: [GatewayIntentBits.Guilds]});
@@ -60,6 +62,31 @@ client.on(Events.InteractionCreate, async interaction => {
 // When the client is ready, run this code (only once)
 client.once(Events.ClientReady, c => {
   console.log(`Ready! Logged in as ${c.user.tag}`);
+
+  const channelId = process.env.NEWS_CHANNEL_ID;
+  const sources = (process.env.NEWS_SOURCES || '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean);
+
+  if (channelId && sources.length) {
+    cron.schedule('0 8 * * *', async () => {
+      try {
+        const stories = await fetchTopStories(sources);
+        const channel = await c.channels.fetch(channelId);
+        let message = 'Here are the top news stories for this morning:\n';
+        for (const [sourceTitle, items] of Object.entries(stories)) {
+          message += `\n**${sourceTitle}**\n`;
+          for (const item of items) {
+            message += `- [${item.title}](${item.link})\n`;
+          }
+        }
+        await channel.send(message);
+      } catch (err) {
+        console.error('Failed to send news summary', err);
+      }
+    });
+  }
 });
 // Log in to Discord with your client's token
 client.login(token);
