@@ -4,6 +4,14 @@
 
 This is a bot that I created to mess around with my friends in our Discord server. Robles-Bot can do anything from play music from a YouTube link in your chat channel, to calling a phone and talking with text to speech. I will be adding more commands once I have more free time, but feel free to branch and contribute your own as well!
 
+## Codebase Overview
+
+Robles-Bot is a Node.js application built on Discord.js. The entry point (`server.js`) loads environment variables, discovers command modules under `commands/`, and listens for Discord events to dispatch interactions to the appropriate handler. A companion script (`deploy-commands.js`) registers these commands with Discord's API.
+
+Commands are organized into category folders, each exporting a `SlashCommandBuilder` definition and an async `execute` function. Database settings live in `config/config.json`, and `package.json` provides scripts for running the bot or executing tests.
+
+To explore further, learn about Discord.js fundamentals, command deployment strategies, environment management with dotenv, persistence through Sequelize, and Node.js async patterns.
+
 ## Commands
 
 - /ping - Replies with Pong!
