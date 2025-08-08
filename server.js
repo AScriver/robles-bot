@@ -8,7 +8,10 @@ const client = new Client({intents: [GatewayIntentBits.Guilds]});
 client.commands = new Collection();
 
 const foldersPath = path.join(__dirname, 'commands');
-const commandFolders = fs.readdirSync(foldersPath);
+const commandFolders = fs
+  .readdirSync(foldersPath, {withFileTypes: true})
+  .filter(dirent => dirent.isDirectory())
+  .map(dirent => dirent.name);
 
 for (const folder of commandFolders) {
   const commandsPath = path.join(foldersPath, folder);
